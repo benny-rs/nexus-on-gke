@@ -1,27 +1,20 @@
 FROM sonatype/nexus3:3.68.0
 
-# ---------------------------------------------------------------------------
-# Install the Google Cloud Storage Blob Store plugin for Nexus Repository OSS
-# Plugin releases: https://github.com/sonatype-nexus-community/nexus-blobstore-google-cloud/releases
-# ---------------------------------------------------------------------------
-
-ARG GCS_PLUGIN_VERSION=0.17.0
+ARG GCS_PLUGIN_VERSION=0.57.0
+ARG MAVEN_CENTRAL=https://repo1.maven.org/maven2/org/sonatype/nexus/plugins/nexus-blobstore-google-cloud
 
 USER root
 
-# Download the plugin KAR archive and place it in Nexus deploy directory
 RUN curl -fsSL \
-    "https://github.com/sonatype-nexus-community/nexus-blobstore-google-cloud/releases/download/${GCS_PLUGIN_VERSION}/nexus-blobstore-google-cloud-${GCS_PLUGIN_VERSION}.kar" \
-    -o /opt/sonatype/nexus/deploy/nexus-blobstore-google-cloud-${GCS_PLUGIN_VERSION}.kar \
-  && chown nexus:nexus /opt/sonatype/nexus/deploy/nexus-blobstore-google-cloud-${GCS_PLUGIN_VERSION}.kar
+    "${MAVEN_CENTRAL}/${GCS_PLUGIN_VERSION}/nexus-blobstore-google-cloud-${GCS_PLUGIN_VERSION}-bundle.kar" \
+    -o /opt/sonatype/nexus/deploy/nexus-blobstore-google-cloud-${GCS_PLUGIN_VERSION}-bundle.kar \
+  && chown nexus:nexus \
+       /opt/sonatype/nexus/deploy/nexus-blobstore-google-cloud-${GCS_PLUGIN_VERSION}-bundle.kar
 
-# Switch back to the unprivileged nexus user
 USER nexus
 
-# Nexus HTTP UI port
 EXPOSE 8081
 
-# Nexus data volume
 VOLUME ["/nexus-data"]
 
 ENTRYPOINT ["/opt/sonatype/nexus/bin/nexus"]
