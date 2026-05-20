@@ -105,4 +105,5 @@ resource "google_service_account_iam_member" "workload_identity_binding" {
   service_account_id = google_service_account.nexus_sa.name
   role               = "roles/iam.workloadIdentityUser"
   member             = "serviceAccount:${var.project_id}.svc.id.goog[nexus/nexus-sa]"
+  depends_on = [google_container_node_pool.nexus_nodes]
 }
