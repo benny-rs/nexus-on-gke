@@ -10,7 +10,7 @@ service:
 
 persistence:
   enabled: true
-  storageClass: "standard-rwo"
+  storageClass: "standard"
   size: 10Gi
   accessMode: ReadWriteOnce
 
