@@ -3,4 +3,4 @@ name: nexus
 description: Nexus Repository Manager 3 with Google Cloud Storage blob store
 type: application
 version: 0.1.0
-appVersion: "3.68.0"
+appVersion: "3.57.0"
