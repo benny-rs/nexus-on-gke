@@ -1,4 +1,4 @@
-FROM sonatype/nexus3:3.57.0
+FROM sonatype/nexus3:3.68.0
 
 ARG GCS_PLUGIN_VERSION=0.57.0
 ARG MAVEN_CENTRAL=https://repo1.maven.org/maven2/org/sonatype/nexus/plugins/nexus-blobstore-google-cloud
