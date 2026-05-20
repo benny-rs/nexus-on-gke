@@ -62,7 +62,7 @@ helm upgrade --install nexus k8s/helm/nexus \
   --set image.tag="3.68.0" \
   --set gcs.bucketName="${GCS_BUCKET}" \
   --set "serviceAccount.annotations.iam\\.gke\\.io/gcp-service-account=nexus-sa@${PROJECT_ID}.iam.gserviceaccount.com" \
-  --wait --timeout=5m
+  --wait --timeout=8m
 
 # ---------------------------------------------------------------------------
 # Step 5 — Print access info
