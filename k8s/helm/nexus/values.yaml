@@ -1,6 +1,6 @@
 image:
   repository: gcr.io/project-df2823f4-a3b3-4db0-a90/nexus3-gcs
-  tag: "3.57.0"
+  tag: "3.68.0"
   pullPolicy: IfNotPresent
 
 service:
